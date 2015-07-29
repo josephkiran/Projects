@@ -19,13 +19,16 @@ namespace FusedLocationProvider.Lib
         public static Document GenerateKML(List<Segment> segments)
         {
             Document d = new Document();
-            
-            foreach (var item in segments)
+            d.Placemarks = new List<Placemark>();
+
+            for (int i = 0; i < segments.Count; i++)
             {
-                d.Placemark = new Placemark();
-                d.Placemark.LineString = new LineString();
-                d.Placemark.LineString.AltitudeMode = "absolute";
-                d.Placemark.LineString.Coordinates = string.Format("{0},{1},0,{2},{3},0", item.StartLat, item.StartLog, item.EndLat, item.EndLog);
+                Segment item = segments[i];
+                Placemark p = new Placemark();
+                p.LineString = new LineString();
+                p.LineString.AltitudeMode = "absolute";
+                p.LineString.Coordinates = string.Format("{0},{1},0,{2},{3},0", item.StartLat, item.StartLog, item.EndLat, item.EndLog);
+                d.Placemarks.Add(p);
             }
 
             return d;
