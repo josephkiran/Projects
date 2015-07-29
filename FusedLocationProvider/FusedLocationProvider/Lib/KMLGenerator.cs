@@ -59,6 +59,8 @@ namespace FusedLocationProvider.Lib
             {
                 Segment item = segments[i];
                 Placemark p = new Placemark();
+                p.Name = "Moving at:" + item.Speed.ToString();
+                p.Description = "Moving at:" + item.Speed.ToString();
                 p.LineString = new LineString();
                 p.LineString.AltitudeMode = "absolute";
                 p.LineString.Coordinates = string.Format("{0},{1},0,{2},{3},0", item.StartLog,item.StartLat , item.EndLog, item.EndLat );

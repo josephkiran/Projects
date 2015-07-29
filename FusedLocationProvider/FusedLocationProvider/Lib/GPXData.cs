@@ -25,6 +25,7 @@ namespace FusedLocationProvider.Lib
         public double StdDevPitch { get; set; }
 
         public RoadType RoadCondition { get; set; }
+        public double Speed { get;  set; }
 
         public override string ToString()
         {

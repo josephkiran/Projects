@@ -40,6 +40,8 @@ namespace FusedLocationProvider.Lib
 
         public List<GPXData> GPXDataList { get { return _gpxdataList; } }
 
+        public double Speed { get; private set; }
+
         public GPXDataSet()
         {
             Segments = new List<Segment>();
@@ -93,6 +95,7 @@ namespace FusedLocationProvider.Lib
                     RoadCondition = RoadType.SlightyBumpy;
                 }
 
+                this.Speed = _gpxdataList[_gpxdataList.Count - 1].Speed;
                 this.Segments.Add(GetCurrentSegment());
 
                 _gpxdataList.Clear();
@@ -119,6 +122,7 @@ namespace FusedLocationProvider.Lib
                 StartLog = this.StartLog,
                 EndLat = this.EndLat,
                 EndLog = this.EndLog,
+                Speed = this.Speed,
                 RoadCondition=this.RoadCondition
             };
         }

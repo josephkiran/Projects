@@ -305,7 +305,7 @@ namespace FusedLocationProvider
 			latitude2.Text = "Latitude: " + location.Latitude.ToString();
             longitude2.Text = "Longitude: " + location.Longitude.ToString() + "SPEED : " + location.Speed.ToString();
 			provider2.Text = "Provider: " + location.Provider.ToString();
-            if(location.Speed > -1 )
+            if(location.Speed > 0.2)
             {
                 if (!_tmrSampling.Enabled)
                 {
