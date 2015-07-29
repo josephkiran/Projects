@@ -1,0 +1,12 @@
+﻿<Properties StartupItem="FusedLocationProvider\FusedLocationProvider.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.AVD_GalaxyNexus_ToolsForApacheCordova" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FusedLocationProvider\MainActivity.cs">
+    <Files>
+      <File FileName="FusedLocationProvider\MainActivity.cs" Line="132" Column="28" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

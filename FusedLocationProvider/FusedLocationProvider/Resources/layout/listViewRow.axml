@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:paddingLeft="2dp"
+    android:paddingRight="10dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:weightSum="90">
+    <TextView
+        android:text="Lat"
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtLat" />
+    <TextView
+        android:text="Log"
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtLog" />
+    <TextView
+        android:text="Condition"
+        android:layout_width="match_parent"
+        android:layout_weight="30"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtCondition" />
+</LinearLayout>
