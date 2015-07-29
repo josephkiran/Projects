@@ -72,6 +72,7 @@ namespace FusedLocationProvider
         private List<SensorData> _sensorData = null;
         private GPXDataSet _gpxDataSet = null;
         private KMLGenerator _kmlGen = null;
+        private int fileID = 0;
 
         ////Lifecycle methods
 
@@ -230,18 +231,25 @@ namespace FusedLocationProvider
 			};
 
             btnGenerateKML.Click += delegate {
-                Document d = KMLGenerator.GenerateKML(_gpxDataSet.Segments);
-                //string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-                string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-                string filename = Path.Combine(path, "test.txt");
-                using (TextWriter writer = new StreamWriter(filename))
-                {
-                    XmlSerializer serializer = new XmlSerializer(typeof(Document));
-                    serializer.Serialize(writer,d);
-                }
+                ThreadPool.QueueUserWorkItem(o => CreateKMLFile());
             };
 
 
+        }
+
+        private void CreateKMLFile()
+        {
+            fileID++;
+            Document d = KMLGenerator.GenerateKML(_gpxDataSet.Segments);
+            //string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+            string filename = Path.Combine(path, fileID.ToString() + "_" + DateTime.Now.ToLongTimeString() + "_test.txt");
+            using (TextWriter writer = new StreamWriter(filename))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Document));
+                serializer.Serialize(writer, d);
+            }
+            _gpxDataSet.Segments.Clear();
         }
 
 		protected override void OnPause ()
@@ -312,6 +320,8 @@ namespace FusedLocationProvider
                 _tmrSampling.Enabled = false;
                 _tmrOverallAvg.Enabled = false;
                 _continueSampling = false;
+                ThreadPool.QueueUserWorkItem(o => CreateKMLFile());
+                               
             }
            
 		}
