@@ -107,10 +107,10 @@ namespace FusedLocationProvider
             txtRange2 = FindViewById<EditText>(Resource.Id.txtRange2);
             txtRange3 = FindViewById<EditText>(Resource.Id.txtRange3);
             txtRange4 = FindViewById<EditText>(Resource.Id.txtRange4);
-            txtRange1.Text = "0.45";
-            txtRange2.Text = "0.75";
-            txtRange3.Text = "1.2";
-            txtRange4.Text = "3";
+            //txtRange1.Text = "0.45";
+            //txtRange2.Text = "0.75";
+            //txtRange3.Text = "1.2";
+            //txtRange4.Text = "3";
             txtRange1.Text = "0.8";
             txtRange2.Text = "1.0";
             txtRange3.Text = "2.0";
@@ -313,7 +313,7 @@ namespace FusedLocationProvider
 			latitude2.Text = "Latitude: " + location.Latitude.ToString();
             longitude2.Text = "Longitude: " + location.Longitude.ToString() + "SPEED : " + location.Speed.ToString();
 			provider2.Text = "Provider: " + location.Provider.ToString();
-            if(location.Speed > 3.0)
+            if(location.Speed > -1)
             {
                 if (!_tmrSampling.Enabled)
                 {

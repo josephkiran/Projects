@@ -63,16 +63,30 @@ namespace FusedLocationProvider.Lib
                 }
                 int count = 0;
                 float totalWeightage = 0;
+                List<double> yawList = new List<double>();
+                List<double> rollList = new List<double>();
+                List<double> pitchList = new List<double>();
                 foreach (var item in _gpxdataList)
                 {
                     if (item.RoadCondition == RoadType.RandomAction)
                     {
                         continue;
                     }
-                    
+
+                    yawList.Add(item.StdDevYaw);
+                    rollList.Add(item.StdDevRoll);
+                    pitchList.Add(item.StdDevPitch);
+
                     count++;
                     totalWeightage = getWeightage(item.RoadCondition);
                 }
+
+               
+               
+
+                this.AvgDevPitch = getStandardDeviation(pitchList);
+                this.AvgDevRoll = getStandardDeviation(rollList);
+                this.AvgDevYaw = getStandardDeviation(yawList);
 
                 this.StartLat = _gpxdataList[0].StartLat;
                 this.StartLog = _gpxdataList[0].StartLog;
@@ -90,7 +104,7 @@ namespace FusedLocationProvider.Lib
                 else if (_avgWeight > 0.1)
                 {
                     RoadCondition = RoadType.Bumpy;
-                }else if(_avgWeight > 0.03)
+                }else if(_avgWeight > 0.02)
                 {
                     RoadCondition = RoadType.SlightyBumpy;
                 }
@@ -109,6 +123,28 @@ namespace FusedLocationProvider.Lib
                 RoadCondition = RoadType.Good;
 
             }
+        }
+
+        private double getStandardDeviation(List<double> doubleList)
+        {
+            if (doubleList.Count > 0)
+            {
+                double average = doubleList.Average();
+                double sumOfDerivation = 0;
+                foreach (double value in doubleList)
+                {
+                    sumOfDerivation += (value) * (value);
+                }
+                double sumOfDerivationAverage = sumOfDerivation / doubleList.Count;
+                return Math.Sqrt(sumOfDerivationAverage - (average * average));
+
+            }
+            else
+            {
+                return 0;
+            }
+
+
         }
 
         private Segment GetCurrentSegment()
