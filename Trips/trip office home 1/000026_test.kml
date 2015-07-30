@@ -31,11 +31,8 @@
     </LineStyle>
   </Style>
   <Placemark>
-<<<<<<< HEAD
     <name>HELLO UPADTE 1</name>
-=======
-    <name>Hello from JK</name>
->>>>>>> 08b7283746ac3d02d5cef105d1c9c8e082e55a78
+  
     <description>Moving at:8.75</description>
     <styleUrl>#greenLine</styleUrl>
     <LineString>
