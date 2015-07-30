@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opengis.net/kml/2.2">
+  <Style id="yellowLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7d00ff00</color>
+    </LineStyle>
+  </Style>
+  <Style id="greenLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7d00ff00</color>
+    </LineStyle>
+  </Style>
+  <Style id="redLine">
+    <LineStyle>
+      <width>4</width>
+      <color>ff0000ff</color>
+    </LineStyle>
+  </Style>
+  <Style id="blueLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7f00ffff</color>
+    </LineStyle>
+  </Style>
+  <Style id="blackLine">
+    <LineStyle>
+      <width>4</width>
+      <color>87000000</color>
+    </LineStyle>
+  </Style>
+  <Placemark>
+    <name>Moving at:7.5</name>
+    <description>Moving at:7.5</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3431458,17.4300035,0,78.3433875,17.4304861,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Moving at:10</name>
+    <description>Moving at:10</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3434279,17.4305427,0,78.3439504,17.4312918,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Moving at:12.25</name>
+    <description>Moving at:12.25</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3439995,17.4313665,0,78.3446216,17.4322977,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Moving at:6</name>
+    <description>Moving at:6</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3446849,17.4323904,0,78.345306,17.4333918,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+</Document>

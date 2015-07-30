@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+  <NetworkLink>
+    <Link>
+      <href>https://onedrive.live.com/redir?resid=A8F383C7BEA6EC5E!7354&authkey=!AEy1D1GH9yMJGs0&ithint=file%2ckml</href>
+      <refreshMode>onInterval</refreshMode>
+      <refreshInterval>10</refreshInterval>
+    </Link>
+  </NetworkLink>
+</Document>
+</kml>
