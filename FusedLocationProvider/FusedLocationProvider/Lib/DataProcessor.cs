@@ -126,7 +126,7 @@ namespace FusedLocationProvider.Lib
             return rdType;
         }
 
-        private RoadType GetRoadType()
+        private RoadType GetRoadTypeV2()
         {
             RoadType rdType;
             if (_sdDevPitch < Range1 && _sdDevRoll < Range1 )
@@ -143,6 +143,35 @@ namespace FusedLocationProvider.Lib
                 rdType = RoadType.Bumpy;
             }
             else if (_sdDevPitch < Range4 && _sdDevRoll < Range4 )
+            {
+                rdType = RoadType.Worst;
+            }
+            else
+            {
+                rdType = RoadType.RandomAction;
+            }
+
+            return rdType;
+        }
+
+
+        private RoadType GetRoadType()
+        {
+            RoadType rdType;
+            if (_sdDevPitch < Range1 && _sdDevRoll < Range1 && _sdDevYaw < Range1)
+            {
+                rdType = RoadType.Good;
+
+            }
+            else if (_sdDevPitch < Range2 && _sdDevRoll < Range2 && _sdDevYaw < Range2)
+            {
+                rdType = RoadType.SlightyBumpy;
+            }
+            else if (_sdDevPitch < Range3 && _sdDevRoll < Range3 && _sdDevYaw < Range3)
+            {
+                rdType = RoadType.Bumpy;
+            }
+            else if (_sdDevPitch < Range4 && _sdDevRoll < Range4 && _sdDevYaw < Range4)
             {
                 rdType = RoadType.Worst;
             }

@@ -66,7 +66,7 @@ namespace FusedLocationProvider
         //Application
         private DataProcessor _dataProcessor = null;
         private const int SAMPLE_COUNT= 10;
-        private const int SAMPLE_TIME_INTERVAL = 3000;
+        private const int SAMPLE_TIME_INTERVAL = 1000;
         private bool _continueSampling = true;
         private int _currentSampleCount = 0;
         private List<SensorData> _sensorData = null;
@@ -111,6 +111,10 @@ namespace FusedLocationProvider
             txtRange2.Text = "0.75";
             txtRange3.Text = "1.2";
             txtRange4.Text = "3";
+            txtRange1.Text = "0.8";
+            txtRange2.Text = "1.0";
+            txtRange3.Text = "2.0";
+            txtRange4.Text = "5.0";
 
             _kmlGen = new KMLGenerator();
             btnGenerateKML = FindViewById<Button>(Resource.Id.btnGenerateKML);
@@ -121,12 +125,15 @@ namespace FusedLocationProvider
             _gpxDataSet = new GPXDataSet();
             _sensorData = new List<SensorData>();
             _tmrOverallAvg.Elapsed += new ElapsedEventHandler(_gpxDataSet.OnOverallAvgTimedEvent);
-            _tmrOverallAvg.Interval = 12000;
+            _tmrOverallAvg.Interval = 5000;
             //_tmrOverallAvg.Enabled = true;
 
             _tmrSampling.Elapsed += new ElapsedEventHandler(this.OnSamplingTimedEvent);
             _tmrSampling.Interval = SAMPLE_TIME_INTERVAL;
             //_tmrSampling.Enabled = true;
+
+            _tmrSampling.Enabled = false;
+            _tmrOverallAvg.Enabled = false;
 
             mlistView = FindViewById<ListView>(Resource.Id.myListView);
             _arrAdp = new ListViewAdapter(this, _gpxDataSet.GPXDataList);
@@ -176,7 +183,7 @@ namespace FusedLocationProvider
 		{
 			base.OnResume ();
 			Log.Debug ("OnResume", "OnResume called, connecting to client...");
-            mSensorManager.RegisterListener(this, mSensorManager.GetDefaultSensor(SensorType.Orientation), SensorDelay.Ui);
+            mSensorManager.RegisterListener(this, mSensorManager.GetDefaultSensor(SensorType.LinearAcceleration), SensorDelay.Ui);
 
             apiClient.Connect();
 
@@ -240,10 +247,11 @@ namespace FusedLocationProvider
         private void CreateKMLFile()
         {
             fileID++;
+            if (_gpxDataSet.Segments.Count == 0) return;
             Document d = KMLGenerator.GenerateKML(_gpxDataSet.Segments);
             //string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-            string filename = Path.Combine(path, fileID.ToString() + "_" + DateTime.Now.ToLongTimeString() + "_test.txt");
+            string filename = Path.Combine(path, DateTime.Now.ToLongTimeString() + "_test.txt");
             using (TextWriter writer = new StreamWriter(filename))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Document));
@@ -305,7 +313,7 @@ namespace FusedLocationProvider
 			latitude2.Text = "Latitude: " + location.Latitude.ToString();
             longitude2.Text = "Longitude: " + location.Longitude.ToString() + "SPEED : " + location.Speed.ToString();
 			provider2.Text = "Provider: " + location.Provider.ToString();
-            if(location.Speed > 0.2)
+            if(location.Speed > 3.0)
             {
                 if (!_tmrSampling.Enabled)
                 {
@@ -315,7 +323,7 @@ namespace FusedLocationProvider
                 }
                
             }
-            else
+            else if (location.Speed < 1)
             {
                 _tmrSampling.Enabled = false;
                 _tmrOverallAvg.Enabled = false;
