@@ -15,6 +15,19 @@ namespace FusedLocationProvider.Lib
 {
     public class KMLGenerator
     {
+        public static List<Segment> completeSegments = new List<Segment>();
+
+        public static string GenerateCSV(List<Segment> segments)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < segments.Count; i++)
+            {
+                Segment item = segments[i];
+                sb.Append(string.Format("{0},{1},{2},{3},{4},{5}{6}", item.AvgDevYaw.ToString("#.####"), item.AvgDevRoll.ToString("#.####"), item.AvgDevPitch.ToString("#.####"), item.Speed.ToString(), item.RoadCondition.ToString(),item.Time.ToLongTimeString(), System.Environment.NewLine));
+            }
+            return sb.ToString();
+        }
+
 
         public static Document GenerateKML(List<Segment> segments)
         {
@@ -51,7 +64,7 @@ namespace FusedLocationProvider.Lib
             st.LineStyle.Width = "4";
             d.Style.Add(st);
 
-
+            completeSegments.AddRange(segments);
 
             d.Placemarks = new List<Placemark>();
 
@@ -59,7 +72,7 @@ namespace FusedLocationProvider.Lib
             {
                 Segment item = segments[i];
                 Placemark p = new Placemark();
-                p.Name = string.Format("{0},{1},{2},{3}",item.AvgDevYaw.ToString("#.###"),item.AvgDevRoll.ToString("#.###"),item.AvgDevPitch.ToString("#.###"),item.Speed.ToString(),item.RoadCondition.ToString());
+                p.Name = string.Format("{0},{1},{2},{3},{4}",item.AvgDevYaw.ToString("#.###"),item.AvgDevRoll.ToString("#.###"),item.AvgDevPitch.ToString("#.###"),item.Speed.ToString(),item.RoadCondition.ToString());
                 p.Description = "JK";
                 p.LineString = new LineString();
                 p.LineString.AltitudeMode = "absolute";
@@ -79,7 +92,6 @@ namespace FusedLocationProvider.Lib
             {
                 case RoadType.Good:
                 case RoadType.Idle:
-                case RoadType.RandomAction:
                     styleID = "#greenLine";
                     break;
                    
@@ -87,10 +99,13 @@ namespace FusedLocationProvider.Lib
                     styleID = "#yellowLine";
                     break;
                 case RoadType.Bumpy:
-                    styleID = "#blueLine";
+                    styleID = "#yellowLine";
                     break;
                 case RoadType.Worst:
                     styleID = "#redLine";
+                    break;
+                case RoadType.RandomAction:
+                    styleID = "#blueLine";
                     break;
                 default:
                     styleID = "#blackLine";

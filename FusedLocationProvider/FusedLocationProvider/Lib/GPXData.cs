@@ -26,6 +26,7 @@ namespace FusedLocationProvider.Lib
 
         public RoadType RoadCondition { get; set; }
         public double Speed { get;  set; }
+        public DateTime Time { get; set; }
 
         public override string ToString()
         {

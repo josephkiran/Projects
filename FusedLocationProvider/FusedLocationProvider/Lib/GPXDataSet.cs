@@ -35,6 +35,8 @@ namespace FusedLocationProvider.Lib
 
         public RoadType RoadCondition { get; set; }
 
+        public DateTime Time { get; set; }
+
         private float _avgWeight = 0;
 
 
@@ -92,6 +94,7 @@ namespace FusedLocationProvider.Lib
                 this.StartLog = _gpxdataList[0].StartLog;
                 this.EndLat = _gpxdataList[_gpxdataList.Count-1].EndLat;
                 this.EndLog = _gpxdataList[_gpxdataList.Count-1].EndLog;
+                this.Time = _gpxdataList[_gpxdataList.Count - 1].Time;
 
 
                 _avgWeight = totalWeightage / count;
@@ -159,7 +162,9 @@ namespace FusedLocationProvider.Lib
                 EndLat = this.EndLat,
                 EndLog = this.EndLog,
                 Speed = this.Speed,
-                RoadCondition=this.RoadCondition
+                RoadCondition=this.RoadCondition,
+                Time = this.Time
+
             };
         }
 

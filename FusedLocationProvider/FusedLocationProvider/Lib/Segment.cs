@@ -27,6 +27,7 @@ namespace FusedLocationProvider.Lib
 
         public double Speed { get; set; }
 
+        public DateTime Time { get; set; }
         public RoadType RoadCondition { get; set; }
     }
 }

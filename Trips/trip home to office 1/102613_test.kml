@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opengis.net/kml/2.2">
+  <Style id="yellowLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7f00ffff</color>
+    </LineStyle>
+  </Style>
+  <Style id="greenLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7d00ff00</color>
+    </LineStyle>
+  </Style>
+  <Style id="redLine">
+    <LineStyle>
+      <width>4</width>
+      <color>ff0000ff</color>
+    </LineStyle>
+  </Style>
+  <Style id="blueLine">
+    <LineStyle>
+      <width>4</width>
+      <color>ffff0000</color>
+    </LineStyle>
+  </Style>
+  <Style id="blackLine">
+    <LineStyle>
+      <width>4</width>
+      <color>87000000</color>
+    </LineStyle>
+  </Style>
+  <Placemark>
+    <name>.049,.071,.054,5.5</name>
+    <description>JK</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3394997,17.4243499,0,78.3395694,17.4244911,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>.03,.037,.373,4</name>
+    <description>JK</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3395991,17.4245444,0,78.3396758,17.424676,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>.048,.052,.033,2.5</name>
+    <description>JK</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3396923,17.424706,0,78.3397562,17.4248439,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>.03,.038,.033,3</name>
+    <description>JK</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3397704,17.4248606,0,78.3398332,17.4249547,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>.033,.021,.018,2.5</name>
+    <description>JK</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.3398473,17.4249692,0,78.3399049,17.4250542,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+</Document>

@@ -111,7 +111,7 @@ namespace FusedLocationProvider
             //txtRange2.Text = "0.75";
             //txtRange3.Text = "1.2";
             //txtRange4.Text = "3";
-            txtRange1.Text = "0.8";
+            txtRange1.Text = "0.8"; 
             txtRange2.Text = "1.0";
             txtRange3.Text = "2.0";
             txtRange4.Text = "5.0";
@@ -238,7 +238,8 @@ namespace FusedLocationProvider
 			};
 
             btnGenerateKML.Click += delegate {
-                ThreadPool.QueueUserWorkItem(o => CreateKMLFile());
+                //ThreadPool.QueueUserWorkItem(o => CreateKMLFile());
+                ThreadPool.QueueUserWorkItem(o => CreateCSVFile());
             };
 
 
@@ -251,13 +252,33 @@ namespace FusedLocationProvider
             Document d = KMLGenerator.GenerateKML(_gpxDataSet.Segments);
             //string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-            string filename = Path.Combine(path, DateTime.Now.ToLongTimeString() + "_test.txt");
+            string filename = Path.Combine(path  , DateTime.Now.ToLongTimeString() + "_test.txt");
+           
             using (TextWriter writer = new StreamWriter(filename))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Document));
                 serializer.Serialize(writer, d);
             }
+           
             _gpxDataSet.Segments.Clear();
+        }
+
+        private void CreateCSVFile()
+        {
+            if (_gpxDataSet.Segments.Count == 0) return;
+            
+            
+            string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+            
+            string filenameCSV = Path.Combine(path , "EXCEL_" + DateTime.Now.ToLongTimeString() + "_data.csv");
+            
+            using (TextWriter writer = new StreamWriter(filenameCSV))
+            {
+                StringBuilder sb = new StringBuilder();
+                writer.Write(KMLGenerator.GenerateCSV(_gpxDataSet.Segments));
+                writer.Close();
+            }
+
         }
 
 		protected override void OnPause ()

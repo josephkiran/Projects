@@ -86,15 +86,16 @@ namespace FusedLocationProvider.Lib
             _rdType = GetRoadType();
             int lastDS = _sensorDataSet.Count - 1;
             return new GPXData() {
-                StartLat =_sensorDataSet[0].Lat,
-                StartLog =_sensorDataSet[0].Log,
+                StartLat = _sensorDataSet[0].Lat,
+                StartLog = _sensorDataSet[0].Log,
                 EndLat = _sensorDataSet[lastDS].Lat,
                 EndLog = _sensorDataSet[lastDS].Log,
                 RoadCondition = _rdType,
-                 StdDevPitch= _sdDevPitch,
-                 StdDevRoll = _sdDevRoll,
-                 StdDevYaw = _sdDevYaw,
-                 Speed = _sensorDataSet[lastDS].Speed
+                StdDevPitch = _sdDevPitch,
+                StdDevRoll = _sdDevRoll,
+                StdDevYaw = _sdDevYaw,
+                Speed = _sensorDataSet[lastDS].Speed,
+                Time = _sensorDataSet[lastDS].Time
             };
         }
 
