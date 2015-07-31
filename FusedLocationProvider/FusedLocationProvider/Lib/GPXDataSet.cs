@@ -5,6 +5,7 @@ using System.Text;
 using System.Timers;
 using Android.App;
 using Android.Content;
+using Android.Media;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -14,7 +15,10 @@ namespace FusedLocationProvider.Lib
 {
     public class GPXDataSet
     {
+        
         public List<Segment> Segments { get; set; }
+       
+        public static Action<RoadType> PlayRoadStatus;
 
         List<GPXData> _gpxdataList = new List<GPXData>();
         public void AddGPXData(GPXData gpxDt)
@@ -29,6 +33,8 @@ namespace FusedLocationProvider.Lib
         public double EndLog { get; set; }
 
         public static int TotalSegments { get; set; }
+
+        //public static List<Segment> OverallSegments { get; set; }
         public double AvgDevYaw { get; set; }
         public double AvgDevRoll { get; set; }
         public double AvgDevPitch { get; set; }
@@ -49,6 +55,14 @@ namespace FusedLocationProvider.Lib
         public GPXDataSet()
         {
             Segments = new List<Segment>();
+            
+        }
+
+         static GPXDataSet()
+        {
+           
+           
+            //OverallSegments = new List<Segment>();
         }
         public void CreateKMLInit(string coordinates)
         {
@@ -103,11 +117,11 @@ namespace FusedLocationProvider.Lib
                 _avgWeight = totalWeightage / count;
 
                 RoadCondition = RoadType.Good;
-                if (_avgWeight > 0.2)
+                if (_avgWeight > 0.25)
                 {
-                    RoadCondition = RoadType.Worst;
+                     RoadCondition = RoadType.Worst;
                 }
-                else if (_avgWeight > 0.1)
+                else if (_avgWeight > 0.15)
                 {
                     RoadCondition = RoadType.Bumpy;
                 }else if(_avgWeight > 0.02)
@@ -117,6 +131,16 @@ namespace FusedLocationProvider.Lib
 
                 this.Speed = _gpxdataList[_gpxdataList.Count - 1].Speed;
                 this.Segments.Add(GetCurrentSegment());
+                try
+                {
+                    PlayRoadStatus(RoadCondition);
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+                
 
                 _gpxdataList.Clear();
             }
@@ -184,7 +208,7 @@ namespace FusedLocationProvider.Lib
                     weight = 0;
                     break;
                 case RoadType.SlightyBumpy:
-                    weight = 0.4f;
+                    weight = 0.5f;
                     break;
                 case RoadType.Bumpy:
                     weight = 1.0f;

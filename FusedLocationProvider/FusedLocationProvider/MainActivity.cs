@@ -18,6 +18,7 @@ using System.Globalization;
 using FusedLocationProvider.Xml2CSharp;
 using System.IO;
 using System.Xml.Serialization;
+using Android.Media;
 
 namespace FusedLocationProvider
 {
@@ -79,7 +80,9 @@ namespace FusedLocationProvider
         private GPXDataSet _gpxDataSet = null;
         private KMLGenerator _kmlGen = null;
         private int fileID = 0;
-
+        MediaPlayer _mpWorse = null;
+        MediaPlayer _mpSBumpy = null;
+        MediaPlayer _mpBumpy = null;
         ////Lifecycle methods
 
 
@@ -117,7 +120,7 @@ namespace FusedLocationProvider
             //txtRange2.Text = "0.75";
             //txtRange3.Text = "1.2";
             //txtRange4.Text = "3";
-            txtRange1.Text = "0.8"; 
+            txtRange1.Text = "0.65"; 
             txtRange2.Text = "1.0";
             txtRange3.Text = "2.0";
             txtRange4.Text = "5.0";
@@ -128,9 +131,13 @@ namespace FusedLocationProvider
             _tgStartStop = FindViewById<ToggleButton>(Resource.Id.tgStartStop);
             _tgStartStop.Checked = false;
             togglebutton.Checked = true;
-            
+            _mpWorse = MediaPlayer.Create(this, Resource.Raw.Worse);
+            _mpSBumpy = MediaPlayer.Create(this, Resource.Raw.SBumpy);
+            _mpBumpy = MediaPlayer.Create(this, Resource.Raw.Bumpy);
+
             mSensorManager = (SensorManager)GetSystemService(SensorService);
             _gpxDataSet = new GPXDataSet();
+            GPXDataSet.PlayRoadStatus = new Action<RoadType>(PlayRoadType);
             _sensorData = new List<SensorData>();
             _tmrOverallAvg.Elapsed += new ElapsedEventHandler(_gpxDataSet.OnOverallAvgTimedEvent);
             _tmrOverallAvg.Interval = 5000;
@@ -167,6 +174,29 @@ namespace FusedLocationProvider
 		}
 
     
+        private void PlayRoadType(RoadType rt)
+        {
+            switch (rt)
+            {
+                case RoadType.Good:
+                    break;
+                case RoadType.SlightyBumpy:
+                    _mpSBumpy.Start();
+                    break;
+                case RoadType.Bumpy:
+                    _mpBumpy.Start();
+                    break;
+                case RoadType.Worst:
+                    _mpWorse.Start();
+                    break;
+                case RoadType.RandomAction:
+                    break;
+                case RoadType.Idle:
+                    break;
+                default:
+                    break;
+            }
+        }
 
 		bool IsGooglePlayServicesInstalled()
 		{
@@ -286,32 +316,42 @@ namespace FusedLocationProvider
             Document d = KMLGenerator.GenerateKML(_gpxDataSet.Segments);
             //string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-            string filename = Path.Combine(path  , DateTime.Now.ToLongTimeString() + "_test.txt");
+            string filename = Path.Combine(path  , "KML_" + DateTime.Now.ToLongTimeString() + "_test.kml");
            
             using (TextWriter writer = new StreamWriter(filename))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Document));
                 serializer.Serialize(writer, d);
             }
-           
+
+            CreateCSVFile();
             _gpxDataSet.Segments.Clear();
         }
 
 
         private void Stop()
         {
-            _tmrOverallAvg.Enabled = false;
-            _tmrSampling.Enabled = false;
-            _continueSampling = false;
-            mSensorManager.UnregisterListener(this);
-
-            if (apiClient.IsConnected)
+            try
             {
-                // stop location updates, passing in the LocationListener
-                LocationServices.FusedLocationApi.RemoveLocationUpdates(apiClient, this);
+                _tmrOverallAvg.Enabled = false;
+                _tmrSampling.Enabled = false;
+                _continueSampling = false;
+                mSensorManager.UnregisterListener(this);
 
-                apiClient.Disconnect();
+                if (apiClient.IsConnected)
+                {
+                    // stop location updates, passing in the LocationListener
+                    LocationServices.FusedLocationApi.RemoveLocationUpdates(apiClient, this);
+
+                    apiClient.Disconnect();
+                }
             }
+            catch (Exception ex)
+            {
+
+                RunOnUiThread(() => Toast.MakeText(this, "EX:" + ex.Message, ToastLength.Short).Show());
+            }
+            
         }
 
         private void Start()
@@ -319,15 +359,35 @@ namespace FusedLocationProvider
             apiClient.Connect();
         }
 
-        private void CreateCSVFile()
+        private void CreateALLCSVFile()
         {
-            if (_gpxDataSet.Segments.Count == 0) return;
+            if (KMLGenerator.completeSegments.Count == 0) return;
             
             
             string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
             
             string filenameCSV = Path.Combine(path , "EXCEL_" + DateTime.Now.ToLongTimeString() + "_data.csv");
             
+            using (TextWriter writer = new StreamWriter(filenameCSV))
+            {
+                StringBuilder sb = new StringBuilder();
+                writer.Write(KMLGenerator.GenerateCSV(KMLGenerator.completeSegments));
+                writer.Close();
+            }
+
+            RunOnUiThread(() => Toast.MakeText(this, "DONE CSV Creation.", ToastLength.Short).Show());
+
+        }
+
+        private void CreateCSVFile()
+        {
+            if (_gpxDataSet.Segments.Count == 0) return;
+
+
+            string path = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+
+            string filenameCSV = Path.Combine(path, "EXCEL_" + DateTime.Now.ToLongTimeString() + "_data.csv");
+
             using (TextWriter writer = new StreamWriter(filenameCSV))
             {
                 StringBuilder sb = new StringBuilder();
@@ -339,7 +399,7 @@ namespace FusedLocationProvider
 
         }
 
-		protected override void OnPause ()
+        protected override void OnPause ()
 		{
 			base.OnPause ();
 			Log.Debug ("OnPause", "OnPause called, stopping location updates");

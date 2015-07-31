@@ -103,41 +103,41 @@ namespace FusedLocationProvider
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050009
-			public const int common_action_bar_splitter = 2131034121;
+			// aapt resource value: 0x7f060009
+			public const int common_action_bar_splitter = 2131099657;
 			
-			// aapt resource value: 0x7f050000
-			public const int common_signin_btn_dark_text_default = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int common_signin_btn_dark_text_default = 2131099648;
 			
-			// aapt resource value: 0x7f050002
-			public const int common_signin_btn_dark_text_disabled = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int common_signin_btn_dark_text_disabled = 2131099650;
 			
-			// aapt resource value: 0x7f050003
-			public const int common_signin_btn_dark_text_focused = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int common_signin_btn_dark_text_focused = 2131099651;
 			
-			// aapt resource value: 0x7f050001
-			public const int common_signin_btn_dark_text_pressed = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int common_signin_btn_dark_text_pressed = 2131099649;
 			
-			// aapt resource value: 0x7f050008
-			public const int common_signin_btn_default_background = 2131034120;
+			// aapt resource value: 0x7f060008
+			public const int common_signin_btn_default_background = 2131099656;
 			
-			// aapt resource value: 0x7f050004
-			public const int common_signin_btn_light_text_default = 2131034116;
+			// aapt resource value: 0x7f060004
+			public const int common_signin_btn_light_text_default = 2131099652;
 			
-			// aapt resource value: 0x7f050006
-			public const int common_signin_btn_light_text_disabled = 2131034118;
+			// aapt resource value: 0x7f060006
+			public const int common_signin_btn_light_text_disabled = 2131099654;
 			
-			// aapt resource value: 0x7f050007
-			public const int common_signin_btn_light_text_focused = 2131034119;
+			// aapt resource value: 0x7f060007
+			public const int common_signin_btn_light_text_focused = 2131099655;
 			
-			// aapt resource value: 0x7f050005
-			public const int common_signin_btn_light_text_pressed = 2131034117;
+			// aapt resource value: 0x7f060005
+			public const int common_signin_btn_light_text_pressed = 2131099653;
 			
-			// aapt resource value: 0x7f05000a
-			public const int common_signin_btn_text_dark = 2131034122;
+			// aapt resource value: 0x7f06000a
+			public const int common_signin_btn_text_dark = 2131099658;
 			
-			// aapt resource value: 0x7f05000b
-			public const int common_signin_btn_text_light = 2131034123;
+			// aapt resource value: 0x7f06000b
+			public const int common_signin_btn_text_light = 2131099659;
 			
 			static Color()
 			{
@@ -267,92 +267,92 @@ namespace FusedLocationProvider
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080005
-			public const int adjust_height = 2131230725;
+			// aapt resource value: 0x7f090005
+			public const int adjust_height = 2131296261;
 			
-			// aapt resource value: 0x7f080006
-			public const int adjust_width = 2131230726;
+			// aapt resource value: 0x7f090006
+			public const int adjust_width = 2131296262;
 			
-			// aapt resource value: 0x7f08000c
-			public const int btnGenerateKML = 2131230732;
+			// aapt resource value: 0x7f09000c
+			public const int btnGenerateKML = 2131296268;
 			
-			// aapt resource value: 0x7f080000
-			public const int hybrid = 2131230720;
+			// aapt resource value: 0x7f090000
+			public const int hybrid = 2131296256;
 			
-			// aapt resource value: 0x7f080016
-			public const int latitude = 2131230742;
+			// aapt resource value: 0x7f090016
+			public const int latitude = 2131296278;
 			
-			// aapt resource value: 0x7f08000f
-			public const int latitude2 = 2131230735;
+			// aapt resource value: 0x7f09000f
+			public const int latitude2 = 2131296271;
 			
-			// aapt resource value: 0x7f080017
-			public const int longitude = 2131230743;
+			// aapt resource value: 0x7f090017
+			public const int longitude = 2131296279;
 			
-			// aapt resource value: 0x7f080010
-			public const int longitude2 = 2131230736;
+			// aapt resource value: 0x7f090010
+			public const int longitude2 = 2131296272;
 			
-			// aapt resource value: 0x7f080015
-			public const int myButton = 2131230741;
+			// aapt resource value: 0x7f090015
+			public const int myButton = 2131296277;
 			
-			// aapt resource value: 0x7f08000e
-			public const int myButton2 = 2131230734;
+			// aapt resource value: 0x7f09000e
+			public const int myButton2 = 2131296270;
 			
-			// aapt resource value: 0x7f08000d
-			public const int myListView = 2131230733;
+			// aapt resource value: 0x7f09000d
+			public const int myListView = 2131296269;
 			
-			// aapt resource value: 0x7f080001
-			public const int none = 2131230721;
+			// aapt resource value: 0x7f090001
+			public const int none = 2131296257;
 			
-			// aapt resource value: 0x7f080002
-			public const int normal = 2131230722;
+			// aapt resource value: 0x7f090002
+			public const int normal = 2131296258;
 			
-			// aapt resource value: 0x7f080018
-			public const int provider = 2131230744;
+			// aapt resource value: 0x7f090018
+			public const int provider = 2131296280;
 			
-			// aapt resource value: 0x7f080014
-			public const int provider2 = 2131230740;
+			// aapt resource value: 0x7f090014
+			public const int provider2 = 2131296276;
 			
-			// aapt resource value: 0x7f080003
-			public const int satellite = 2131230723;
+			// aapt resource value: 0x7f090003
+			public const int satellite = 2131296259;
 			
-			// aapt resource value: 0x7f080004
-			public const int terrain = 2131230724;
+			// aapt resource value: 0x7f090004
+			public const int terrain = 2131296260;
 			
-			// aapt resource value: 0x7f08000b
-			public const int tgStartStop = 2131230731;
+			// aapt resource value: 0x7f09000b
+			public const int tgStartStop = 2131296267;
 			
-			// aapt resource value: 0x7f08000a
-			public const int togglebutton = 2131230730;
+			// aapt resource value: 0x7f09000a
+			public const int togglebutton = 2131296266;
 			
-			// aapt resource value: 0x7f080013
-			public const int txtAvgStdDev = 2131230739;
+			// aapt resource value: 0x7f090013
+			public const int txtAvgStdDev = 2131296275;
 			
-			// aapt resource value: 0x7f080009
-			public const int txtCondition = 2131230729;
+			// aapt resource value: 0x7f090009
+			public const int txtCondition = 2131296265;
 			
-			// aapt resource value: 0x7f080007
-			public const int txtLat = 2131230727;
+			// aapt resource value: 0x7f090007
+			public const int txtLat = 2131296263;
 			
-			// aapt resource value: 0x7f080008
-			public const int txtLog = 2131230728;
+			// aapt resource value: 0x7f090008
+			public const int txtLog = 2131296264;
 			
-			// aapt resource value: 0x7f080019
-			public const int txtRange1 = 2131230745;
+			// aapt resource value: 0x7f090019
+			public const int txtRange1 = 2131296281;
 			
-			// aapt resource value: 0x7f08001a
-			public const int txtRange2 = 2131230746;
+			// aapt resource value: 0x7f09001a
+			public const int txtRange2 = 2131296282;
 			
-			// aapt resource value: 0x7f08001b
-			public const int txtRange3 = 2131230747;
+			// aapt resource value: 0x7f09001b
+			public const int txtRange3 = 2131296283;
 			
-			// aapt resource value: 0x7f08001c
-			public const int txtRange4 = 2131230748;
+			// aapt resource value: 0x7f09001c
+			public const int txtRange4 = 2131296284;
 			
-			// aapt resource value: 0x7f080011
-			public const int txtRaw = 2131230737;
+			// aapt resource value: 0x7f090011
+			public const int txtRaw = 2131296273;
 			
-			// aapt resource value: 0x7f080012
-			public const int txtStdDev = 2131230738;
+			// aapt resource value: 0x7f090012
+			public const int txtStdDev = 2131296274;
 			
 			static Id()
 			{
@@ -367,8 +367,8 @@ namespace FusedLocationProvider
 		public partial class Integer
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int google_play_services_version = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int google_play_services_version = 2131165184;
 			
 			static Integer()
 			{
@@ -399,122 +399,144 @@ namespace FusedLocationProvider
 			}
 		}
 		
+		public partial class Raw
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int Bumpy = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int SBumpy = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int Worse = 2130968578;
+			
+			static Raw()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Raw()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040023
-			public const int ApplicationName = 2130968611;
+			// aapt resource value: 0x7f050023
+			public const int ApplicationName = 2131034147;
 			
-			// aapt resource value: 0x7f040022
-			public const int Hello = 2130968610;
+			// aapt resource value: 0x7f050022
+			public const int Hello = 2131034146;
 			
-			// aapt resource value: 0x7f040025
-			public const int app_name = 2130968613;
+			// aapt resource value: 0x7f050025
+			public const int app_name = 2131034149;
 			
-			// aapt resource value: 0x7f040001
-			public const int auth_google_play_services_client_facebook_display_name = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int auth_google_play_services_client_facebook_display_name = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int auth_google_play_services_client_google_display_name = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int auth_google_play_services_client_google_display_name = 2131034112;
 			
-			// aapt resource value: 0x7f040004
-			public const int common_android_wear_notification_needs_update_text = 2130968580;
+			// aapt resource value: 0x7f050004
+			public const int common_android_wear_notification_needs_update_text = 2131034116;
 			
-			// aapt resource value: 0x7f040011
-			public const int common_android_wear_update_text = 2130968593;
+			// aapt resource value: 0x7f050011
+			public const int common_android_wear_update_text = 2131034129;
 			
-			// aapt resource value: 0x7f04000f
-			public const int common_android_wear_update_title = 2130968591;
+			// aapt resource value: 0x7f05000f
+			public const int common_android_wear_update_title = 2131034127;
 			
-			// aapt resource value: 0x7f04001f
-			public const int common_google_play_services_api_unavailable_text = 2130968607;
+			// aapt resource value: 0x7f05001f
+			public const int common_google_play_services_api_unavailable_text = 2131034143;
 			
-			// aapt resource value: 0x7f04000d
-			public const int common_google_play_services_enable_button = 2130968589;
+			// aapt resource value: 0x7f05000d
+			public const int common_google_play_services_enable_button = 2131034125;
 			
-			// aapt resource value: 0x7f04000c
-			public const int common_google_play_services_enable_text = 2130968588;
+			// aapt resource value: 0x7f05000c
+			public const int common_google_play_services_enable_text = 2131034124;
 			
-			// aapt resource value: 0x7f04000b
-			public const int common_google_play_services_enable_title = 2130968587;
+			// aapt resource value: 0x7f05000b
+			public const int common_google_play_services_enable_title = 2131034123;
 			
-			// aapt resource value: 0x7f040006
-			public const int common_google_play_services_error_notification_requested_by_msg = 2130968582;
+			// aapt resource value: 0x7f050006
+			public const int common_google_play_services_error_notification_requested_by_msg = 2131034118;
 			
-			// aapt resource value: 0x7f04000a
-			public const int common_google_play_services_install_button = 2130968586;
+			// aapt resource value: 0x7f05000a
+			public const int common_google_play_services_install_button = 2131034122;
 			
-			// aapt resource value: 0x7f040008
-			public const int common_google_play_services_install_text_phone = 2130968584;
+			// aapt resource value: 0x7f050008
+			public const int common_google_play_services_install_text_phone = 2131034120;
 			
-			// aapt resource value: 0x7f040009
-			public const int common_google_play_services_install_text_tablet = 2130968585;
+			// aapt resource value: 0x7f050009
+			public const int common_google_play_services_install_text_tablet = 2131034121;
 			
-			// aapt resource value: 0x7f040007
-			public const int common_google_play_services_install_title = 2130968583;
+			// aapt resource value: 0x7f050007
+			public const int common_google_play_services_install_title = 2131034119;
 			
-			// aapt resource value: 0x7f040017
-			public const int common_google_play_services_invalid_account_text = 2130968599;
+			// aapt resource value: 0x7f050017
+			public const int common_google_play_services_invalid_account_text = 2131034135;
 			
-			// aapt resource value: 0x7f040016
-			public const int common_google_play_services_invalid_account_title = 2130968598;
+			// aapt resource value: 0x7f050016
+			public const int common_google_play_services_invalid_account_title = 2131034134;
 			
-			// aapt resource value: 0x7f040005
-			public const int common_google_play_services_needs_enabling_title = 2130968581;
+			// aapt resource value: 0x7f050005
+			public const int common_google_play_services_needs_enabling_title = 2131034117;
 			
-			// aapt resource value: 0x7f040015
-			public const int common_google_play_services_network_error_text = 2130968597;
+			// aapt resource value: 0x7f050015
+			public const int common_google_play_services_network_error_text = 2131034133;
 			
-			// aapt resource value: 0x7f040014
-			public const int common_google_play_services_network_error_title = 2130968596;
+			// aapt resource value: 0x7f050014
+			public const int common_google_play_services_network_error_title = 2131034132;
 			
-			// aapt resource value: 0x7f040003
-			public const int common_google_play_services_notification_needs_update_title = 2130968579;
+			// aapt resource value: 0x7f050003
+			public const int common_google_play_services_notification_needs_update_title = 2131034115;
 			
-			// aapt resource value: 0x7f040002
-			public const int common_google_play_services_notification_ticker = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int common_google_play_services_notification_ticker = 2131034114;
 			
-			// aapt resource value: 0x7f040021
-			public const int common_google_play_services_sign_in_failed_text = 2130968609;
+			// aapt resource value: 0x7f050021
+			public const int common_google_play_services_sign_in_failed_text = 2131034145;
 			
-			// aapt resource value: 0x7f040020
-			public const int common_google_play_services_sign_in_failed_title = 2130968608;
+			// aapt resource value: 0x7f050020
+			public const int common_google_play_services_sign_in_failed_title = 2131034144;
 			
-			// aapt resource value: 0x7f040018
-			public const int common_google_play_services_unknown_issue = 2130968600;
+			// aapt resource value: 0x7f050018
+			public const int common_google_play_services_unknown_issue = 2131034136;
 			
-			// aapt resource value: 0x7f04001a
-			public const int common_google_play_services_unsupported_text = 2130968602;
+			// aapt resource value: 0x7f05001a
+			public const int common_google_play_services_unsupported_text = 2131034138;
 			
-			// aapt resource value: 0x7f040019
-			public const int common_google_play_services_unsupported_title = 2130968601;
+			// aapt resource value: 0x7f050019
+			public const int common_google_play_services_unsupported_title = 2131034137;
 			
-			// aapt resource value: 0x7f04001b
-			public const int common_google_play_services_update_button = 2130968603;
+			// aapt resource value: 0x7f05001b
+			public const int common_google_play_services_update_button = 2131034139;
 			
-			// aapt resource value: 0x7f040010
-			public const int common_google_play_services_update_text = 2130968592;
+			// aapt resource value: 0x7f050010
+			public const int common_google_play_services_update_text = 2131034128;
 			
-			// aapt resource value: 0x7f04000e
-			public const int common_google_play_services_update_title = 2130968590;
+			// aapt resource value: 0x7f05000e
+			public const int common_google_play_services_update_title = 2131034126;
 			
-			// aapt resource value: 0x7f040013
-			public const int common_google_play_services_updating_text = 2130968595;
+			// aapt resource value: 0x7f050013
+			public const int common_google_play_services_updating_text = 2131034131;
 			
-			// aapt resource value: 0x7f040012
-			public const int common_google_play_services_updating_title = 2130968594;
+			// aapt resource value: 0x7f050012
+			public const int common_google_play_services_updating_title = 2131034130;
 			
-			// aapt resource value: 0x7f04001e
-			public const int common_open_on_phone = 2130968606;
+			// aapt resource value: 0x7f05001e
+			public const int common_open_on_phone = 2131034142;
 			
-			// aapt resource value: 0x7f04001c
-			public const int common_signin_button_text = 2130968604;
+			// aapt resource value: 0x7f05001c
+			public const int common_signin_button_text = 2131034140;
 			
-			// aapt resource value: 0x7f04001d
-			public const int common_signin_button_text_long = 2130968605;
+			// aapt resource value: 0x7f05001d
+			public const int common_signin_button_text_long = 2131034141;
 			
-			// aapt resource value: 0x7f040024
-			public const int hello = 2130968612;
+			// aapt resource value: 0x7f050024
+			public const int hello = 2131034148;
 			
 			static String()
 			{
@@ -529,8 +551,8 @@ namespace FusedLocationProvider
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f070000
-			public const int Mono_Android_Theme_Splash = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int Mono_Android_Theme_Splash = 2131230720;
 			
 			static Style()
 			{
