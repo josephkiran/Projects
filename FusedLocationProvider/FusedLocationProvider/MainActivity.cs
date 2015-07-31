@@ -46,6 +46,7 @@ namespace FusedLocationProvider
         EditText txtRange3;
         EditText txtRange4;
         Button btnGenerateKML;
+        ToggleButton togglebutton;
 
         private ListView mlistView;
         ListViewAdapter _arrAdp;
@@ -118,9 +119,10 @@ namespace FusedLocationProvider
 
             _kmlGen = new KMLGenerator();
             btnGenerateKML = FindViewById<Button>(Resource.Id.btnGenerateKML);
+            togglebutton = FindViewById<ToggleButton>(Resource.Id.togglebutton);
+
+            togglebutton.Checked = true;
             
-
-
             mSensorManager = (SensorManager)GetSystemService(SensorService);
             _gpxDataSet = new GPXDataSet();
             _sensorData = new List<SensorData>();
@@ -186,9 +188,17 @@ namespace FusedLocationProvider
             mSensorManager.RegisterListener(this, mSensorManager.GetDefaultSensor(SensorType.LinearAcceleration), SensorDelay.Ui);
 
             apiClient.Connect();
+            togglebutton.RequestFocus();
+            togglebutton.Click += (o, e) => {
+                // Perform action on clicks
+                if (togglebutton.Checked)
+                    Toast.MakeText(this, "Checked", ToastLength.Short).Show();
+                else
+                    Toast.MakeText(this, "Not checked", ToastLength.Short).Show();
+            };
 
-			// Clicking the first button will make a one-time call to get the user's last location
-			button.Click += delegate {
+            // Clicking the first button will make a one-time call to get the user's last location
+            button.Click += delegate {
 				if (apiClient.IsConnected)
 				{
 					button.Text = "Getting Last Location";
@@ -334,7 +344,11 @@ namespace FusedLocationProvider
 			latitude2.Text = "Latitude: " + location.Latitude.ToString();
             longitude2.Text = "Longitude: " + location.Longitude.ToString() + "SPEED : " + location.Speed.ToString();
 			provider2.Text = "Provider: " + location.Provider.ToString();
-            if(location.Speed > -1)
+            int startVal = -1;
+            if (togglebutton.Checked)
+                startVal = 3;
+
+            if (location.Speed > startVal)
             {
                 if (!_tmrSampling.Enabled)
                 {

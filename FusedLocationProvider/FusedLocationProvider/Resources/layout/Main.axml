@@ -9,26 +9,12 @@
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-            <EditText
-                android:layout_width="match_parent"
+            <ToggleButton
+                android:id="@+id/togglebutton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtRange1"
-                android:text="range1" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtRange2"
-                android:text="range2" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtRange3"
-                android:text="range3" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtRange4"
-                android:text="range4" />
+                android:textOn="CAR ON"
+                android:textOff="CAR OFF" />
             <ListView
                 android:layout_width="match_parent"
                 android:layout_weight="50"
@@ -104,7 +90,27 @@
                 android:id="@+id/btnGenerateKML"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="GENERATE KML" />
+                android:text="GENERATE CSV" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtRange1"
+                android:text="range1" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtRange2"
+                android:text="range2" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtRange3"
+                android:text="range3" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtRange4"
+                android:text="range4" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
