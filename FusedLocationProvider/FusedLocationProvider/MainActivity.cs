@@ -45,13 +45,18 @@ namespace FusedLocationProvider
         EditText txtRange2;
         EditText txtRange3;
         EditText txtRange4;
-        Button btnGenerateKML;
+        Button btnGenerateCSV;
         ToggleButton togglebutton;
+        ToggleButton _tgStartStop;
+       
 
         private ListView mlistView;
         ListViewAdapter _arrAdp;
         int _totalSamples = 0;
-        
+
+        #region Declaration UI
+
+        #endregion
 
 
         System.Timers.Timer _tmrOverallAvg = new System.Timers.Timer();
@@ -118,9 +123,10 @@ namespace FusedLocationProvider
             txtRange4.Text = "5.0";
 
             _kmlGen = new KMLGenerator();
-            btnGenerateKML = FindViewById<Button>(Resource.Id.btnGenerateKML);
+            btnGenerateCSV = FindViewById<Button>(Resource.Id.btnGenerateKML);
             togglebutton = FindViewById<ToggleButton>(Resource.Id.togglebutton);
-
+            _tgStartStop = FindViewById<ToggleButton>(Resource.Id.tgStartStop);
+            _tgStartStop.Checked = false;
             togglebutton.Checked = true;
             
             mSensorManager = (SensorManager)GetSystemService(SensorService);
@@ -184,11 +190,29 @@ namespace FusedLocationProvider
 		protected override void OnResume()
 		{
 			base.OnResume ();
+            if (_tgStartStop.Checked)
+            {
+                Start();
+            }
 			Log.Debug ("OnResume", "OnResume called, connecting to client...");
-            mSensorManager.RegisterListener(this, mSensorManager.GetDefaultSensor(SensorType.LinearAcceleration), SensorDelay.Ui);
+            //mSensorManager.RegisterListener(this, mSensorManager.GetDefaultSensor(SensorType.LinearAcceleration), SensorDelay.Ui);
 
-            apiClient.Connect();
-            togglebutton.RequestFocus();
+            //apiClient.Connect();
+
+            _tgStartStop.Click += (o, e) => {
+                // Perform action on clicks
+                if (_tgStartStop.Checked)
+                {
+                    ThreadPool.QueueUserWorkItem(to => this.Start());
+                    Toast.MakeText(this, "Starting", ToastLength.Short).Show();
+                }
+                else
+                {
+                    ThreadPool.QueueUserWorkItem(to => this.Stop());
+                    Toast.MakeText(this, "Stopping", ToastLength.Short).Show();
+                }
+            };
+
             togglebutton.Click += (o, e) => {
                 // Perform action on clicks
                 if (togglebutton.Checked)
@@ -247,7 +271,7 @@ namespace FusedLocationProvider
 				}
 			};
 
-            btnGenerateKML.Click += delegate {
+            btnGenerateCSV.Click += delegate {
                 //ThreadPool.QueueUserWorkItem(o => CreateKMLFile());
                 ThreadPool.QueueUserWorkItem(o => CreateCSVFile());
             };
@@ -273,6 +297,28 @@ namespace FusedLocationProvider
             _gpxDataSet.Segments.Clear();
         }
 
+
+        private void Stop()
+        {
+            _tmrOverallAvg.Enabled = false;
+            _tmrSampling.Enabled = false;
+            _continueSampling = false;
+            mSensorManager.UnregisterListener(this);
+
+            if (apiClient.IsConnected)
+            {
+                // stop location updates, passing in the LocationListener
+                LocationServices.FusedLocationApi.RemoveLocationUpdates(apiClient, this);
+
+                apiClient.Disconnect();
+            }
+        }
+
+        private void Start()
+        {
+            apiClient.Connect();
+        }
+
         private void CreateCSVFile()
         {
             if (_gpxDataSet.Segments.Count == 0) return;
@@ -288,6 +334,8 @@ namespace FusedLocationProvider
                 writer.Write(KMLGenerator.GenerateCSV(_gpxDataSet.Segments));
                 writer.Close();
             }
+
+            RunOnUiThread(() => Toast.MakeText(this, "DONE CSV Creation.", ToastLength.Short).Show());
 
         }
 
@@ -310,19 +358,48 @@ namespace FusedLocationProvider
 
 		public void OnConnected (Bundle bundle)
 		{
-			// This method is called when we connect to the LocationClient. We can start location updated directly form
-			// here if desired, or we can do it in a lifecycle method, as shown above 
+            // This method is called when we connect to the LocationClient. We can start location updated directly form
+            // here if desired, or we can do it in a lifecycle method, as shown above 
 
-			// You must implement this to implement the IGooglePlayServicesClientConnectionCallbacks Interface
-			Log.Info("LocationClient", "Now connected to client");
+            if (apiClient.IsConnected)
+            {
+                button2.Text = "Requesting Location Updates";
+
+                // Setting location priority to PRIORITY_HIGH_ACCURACY (100)
+                locRequest.SetPriority(100);
+
+                // Setting interval between updates, in milliseconds
+                // NOTE: the default FastestInterval is 1 minute. If you want to receive location updates more than 
+                // once a minute, you _must_ also change the FastestInterval to be less than or equal to your Interval
+                locRequest.SetFastestInterval(500);
+                locRequest.SetInterval(1000);
+
+                Log.Debug("LocationRequest", "Request priority set to status code {0}, interval set to {1} ms",
+                    locRequest.Priority.ToString(), locRequest.Interval.ToString());
+
+                // pass in a location request and LocationListener
+                LocationServices.FusedLocationApi.RequestLocationUpdates(apiClient, locRequest, this);
+
+                mSensorManager.RegisterListener(this, mSensorManager.GetDefaultSensor(SensorType.LinearAcceleration), SensorDelay.Ui);
+                // In OnLocationChanged (below), we will make calls to update the UI
+                // with the new location data
+            }
+            else
+            {
+                Log.Info("LocationClient", "Please wait for Client to connect");
+            }
+
+            // You must implement this to implement the IGooglePlayServicesClientConnectionCallbacks Interface
+            Log.Info("LocationClient", "Now connected to client");
 		}
 
 		public void OnDisconnected ()
 		{
-			// This method is called when we disconnect from the LocationClient.
+            // This method is called when we disconnect from the LocationClient.
 
-			// You must implement this to implement the IGooglePlayServicesClientConnectionCallbacks Interface
-			Log.Info("LocationClient", "Now disconnected from client");
+            // You must implement this to implement the IGooglePlayServicesClientConnectionCallbacks Interface
+            mSensorManager.UnregisterListener(this);
+            Log.Info("LocationClient", "Now disconnected from client");
 		}
 
 		public void OnConnectionFailed (ConnectionResult bundle)
@@ -341,9 +418,9 @@ namespace FusedLocationProvider
 			// You must implement this to implement the Android.Gms.Locations.ILocationListener Interface
 			Log.Debug ("LocationClient", "Location updated");
 
-			latitude2.Text = "Latitude: " + location.Latitude.ToString();
-            longitude2.Text = "Longitude: " + location.Longitude.ToString() + "SPEED : " + location.Speed.ToString();
-			provider2.Text = "Provider: " + location.Provider.ToString();
+			//latitude2.Text = "Latitude: " + location.Latitude.ToString();
+            //longitude2.Text = "Longitude: " + location.Longitude.ToString() + "SPEED : " + location.Speed.ToString();
+			//provider2.Text = "Provider: " + location.Provider.ToString();
             int startVal = -1;
             if (togglebutton.Checked)
                 startVal = 3;
@@ -384,7 +461,7 @@ namespace FusedLocationProvider
                     .Append(e.Values[1])
                     .Append(", PITCH=")
                     .Append(e.Values[2]);
-                txtRaw.Text = text.ToString();
+              //  txtRaw.Text = text.ToString();
                 //mSensorTextView.Text = text.ToString();
                
 

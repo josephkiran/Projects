@@ -35,6 +35,8 @@ namespace FusedLocationProvider.Lib
 
         public RoadType RoadCondition { get; set; }
 
+        public string IterationRoadConditions { get; set; }
+
         public DateTime Time { get; set; }
 
         private float _avgWeight = 0;
@@ -68,6 +70,7 @@ namespace FusedLocationProvider.Lib
                 List<double> yawList = new List<double>();
                 List<double> rollList = new List<double>();
                 List<double> pitchList = new List<double>();
+                IterationRoadConditions = "";
                 foreach (var item in _gpxdataList)
                 {
                     if (item.RoadCondition == RoadType.RandomAction)
@@ -78,7 +81,7 @@ namespace FusedLocationProvider.Lib
                     yawList.Add(item.StdDevYaw);
                     rollList.Add(item.StdDevRoll);
                     pitchList.Add(item.StdDevPitch);
-
+                    IterationRoadConditions += ((int)item.RoadCondition).ToString() + ",";
                     count++;
                     totalWeightage = getWeightage(item.RoadCondition);
                 }
@@ -163,6 +166,7 @@ namespace FusedLocationProvider.Lib
                 EndLog = this.EndLog,
                 Speed = this.Speed,
                 RoadCondition=this.RoadCondition,
+                IterationRoadConditions=this.IterationRoadConditions,
                 Time = this.Time
 
             };

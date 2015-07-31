@@ -13,8 +13,19 @@
                 android:id="@+id/togglebutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textOn="CAR ON"
-                android:textOff="CAR OFF" />
+                android:textOn="CAR OFF"
+                android:textOff="CAR ON" />
+            <ToggleButton
+                android:id="@+id/tgStartStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="STOP"
+                android:textOff="START" />
+            <Button
+                android:id="@+id/btnGenerateKML"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="GENERATE CSV" />
             <ListView
                 android:layout_width="match_parent"
                 android:layout_weight="50"
@@ -86,11 +97,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/provider" />
-            <Button
-                android:id="@+id/btnGenerateKML"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="GENERATE CSV" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
