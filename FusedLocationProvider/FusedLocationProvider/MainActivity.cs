@@ -120,7 +120,7 @@ namespace FusedLocationProvider
             //txtRange2.Text = "0.75";
             //txtRange3.Text = "1.2";
             //txtRange4.Text = "3";
-            txtRange1.Text = "0.65"; 
+            txtRange1.Text = "0.7"; 
             txtRange2.Text = "1.0";
             txtRange3.Text = "2.0";
             txtRange4.Text = "5.0";

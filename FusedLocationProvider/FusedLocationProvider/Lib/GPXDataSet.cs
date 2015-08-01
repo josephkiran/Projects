@@ -26,6 +26,7 @@ namespace FusedLocationProvider.Lib
             _gpxdataList.Add(gpxDt);
         }
 
+        public double TotalWeight { get; set; }
         public double StartLat { get; set; }
         public double StartLog { get; set; }
 
@@ -97,7 +98,7 @@ namespace FusedLocationProvider.Lib
                     pitchList.Add(item.StdDevPitch);
                     IterationRoadConditions += ((int)item.RoadCondition).ToString() + ",";
                     count++;
-                    totalWeightage = getWeightage(item.RoadCondition);
+                    totalWeightage += getWeightage(item.RoadCondition);
                 }
 
                
@@ -113,18 +114,18 @@ namespace FusedLocationProvider.Lib
                 this.EndLog = _gpxdataList[_gpxdataList.Count-1].EndLog;
                 this.Time = _gpxdataList[_gpxdataList.Count - 1].Time;
 
-
+                TotalWeight = totalWeightage;
                 _avgWeight = totalWeightage / count;
 
                 RoadCondition = RoadType.Good;
-                if (_avgWeight > 0.25)
+                if (_avgWeight > 0.6)
                 {
                      RoadCondition = RoadType.Worst;
                 }
-                else if (_avgWeight > 0.15)
+                else if (_avgWeight > 0.4)
                 {
                     RoadCondition = RoadType.Bumpy;
-                }else if(_avgWeight > 0.02)
+                }else if(_avgWeight > 0.30)
                 {
                     RoadCondition = RoadType.SlightyBumpy;
                 }
@@ -208,10 +209,10 @@ namespace FusedLocationProvider.Lib
                     weight = 0;
                     break;
                 case RoadType.SlightyBumpy:
-                    weight = 0.5f;
+                    weight = 1.0f;
                     break;
                 case RoadType.Bumpy:
-                    weight = 1.0f;
+                    weight = 1.2f;
                     break;
                 case RoadType.Worst:
                     weight = 1.5f;
@@ -231,7 +232,7 @@ namespace FusedLocationProvider.Lib
 
         public override string ToString()
         {
-            return string.Format("OVERALL: {0} : {1}\n{2}", RoadCondition.ToString(), _avgWeight.ToString(),TotalSegments.ToString());
+            return string.Format("JK: {0} : {1}\nAVG:{2}\n{3}", RoadCondition.ToString(), TotalWeight.ToString("#.###"), _avgWeight.ToString("#.###"),TotalSegments.ToString());
         }
 
     }

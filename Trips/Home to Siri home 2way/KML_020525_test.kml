@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opengis.net/kml/2.2">
+  <Style id="yellowLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7f00ffff</color>
+    </LineStyle>
+  </Style>
+  <Style id="greenLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7d00ff00</color>
+    </LineStyle>
+  </Style>
+  <Style id="redLine">
+    <LineStyle>
+      <width>4</width>
+      <color>ff0000ff</color>
+    </LineStyle>
+  </Style>
+  <Style id="blueLine">
+    <LineStyle>
+      <width>4</width>
+      <color>ffff0000</color>
+    </LineStyle>
+  </Style>
+  <Style id="blackLine">
+    <LineStyle>
+      <width>4</width>
+      <color>87000000</color>
+    </LineStyle>
+  </Style>
+  <Placemark>
+    <name>.095,.052,.052,3.25,Good</name>
+    <description>JK</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.402929,17.4065331,0,78.402806,17.4061579,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+</Document>
