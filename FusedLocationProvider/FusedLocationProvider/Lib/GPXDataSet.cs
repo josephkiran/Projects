@@ -20,6 +20,11 @@ namespace FusedLocationProvider.Lib
        
         public static Action<RoadType> PlayRoadStatus;
 
+        public static float SlightBumpRange { get; set; }
+
+        public static float BumpRange { get; set; }
+
+
         List<GPXData> _gpxdataList = new List<GPXData>();
         public void AddGPXData(GPXData gpxDt)
         {
@@ -47,6 +52,9 @@ namespace FusedLocationProvider.Lib
         public DateTime Time { get; set; }
 
         private float _avgWeight = 0;
+        private double _directVal = 0;
+        private double _finalVal = 0;
+
 
 
         public List<GPXData> GPXDataList { get { return _gpxdataList; } }
@@ -116,21 +124,11 @@ namespace FusedLocationProvider.Lib
 
                 TotalWeight = totalWeightage;
                 _avgWeight = totalWeightage / count;
-
-                RoadCondition = RoadType.Good;
-                if (_avgWeight > 0.6)
-                {
-                     RoadCondition = RoadType.Worst;
-                }
-                else if (_avgWeight > 0.4)
-                {
-                    RoadCondition = RoadType.Bumpy;
-                }else if(_avgWeight > 0.30)
-                {
-                    RoadCondition = RoadType.SlightyBumpy;
-                }
-
                 this.Speed = _gpxdataList[_gpxdataList.Count - 1].Speed;
+
+
+                ProcessRoadTypeV2();
+
                 this.Segments.Add(GetCurrentSegment());
                 try
                 {
@@ -154,6 +152,71 @@ namespace FusedLocationProvider.Lib
                 RoadCondition = RoadType.Good;
 
             }
+        }
+
+
+
+
+        private RoadType ProcessRoadTypeV1()
+        {
+            RoadCondition = RoadType.Good;
+            _directVal = TotalWeight;
+            _finalVal = _avgWeight;
+            if (_avgWeight > 0.6)
+            {
+                RoadCondition = RoadType.Worst;
+            }
+            else if (_avgWeight > 0.4)
+            {
+                RoadCondition = RoadType.Bumpy;
+            }
+            else if (_avgWeight > 0.30)
+            {
+                RoadCondition = RoadType.SlightyBumpy;
+            }
+            return RoadCondition;
+        }
+
+        //Inverse speed with max variance
+        private RoadType ProcessRoadTypeV2()
+        {
+            double val = 0;
+            RoadCondition = RoadType.Good;
+            val = Math.Max(AvgDevPitch, AvgDevRoll);
+            val = Math.Max(val, AvgDevYaw);
+            _directVal = val;
+            val = (val / Speed) * 100;
+            _finalVal = val;
+            if (val > BumpRange)
+            {
+                RoadCondition = RoadType.Bumpy;
+            }else if(val > SlightBumpRange)
+            {
+                RoadCondition = RoadType.SlightyBumpy;
+            }
+            
+            return RoadCondition;
+        }
+
+        //Inverse speed with total variance
+        private RoadType ProcessRoadTypeV3()
+        {
+            double val = 0;
+            RoadCondition = RoadType.Good;
+            val = AvgDevPitch + AvgDevRoll + AvgDevYaw;
+            _directVal = val;
+            val = (val / Speed) * 100;
+            _finalVal = val;
+            if (val > 3)
+            {
+                RoadCondition = RoadType.Bumpy;
+            }
+            else if (val > 2)
+            {
+                RoadCondition = RoadType.SlightyBumpy;
+            }
+
+            return RoadCondition;
         }
 
         private double getStandardDeviation(List<double> doubleList)
@@ -232,7 +295,7 @@ namespace FusedLocationProvider.Lib
 
         public override string ToString()
         {
-            return string.Format("JK: {0} : {1}\nAVG:{2}\n{3}", RoadCondition.ToString(), TotalWeight.ToString("#.###"), _avgWeight.ToString("#.###"),TotalSegments.ToString());
+            return string.Format("Overall:\n {0} : {1}\nFINAL:{2}\n{3}", RoadCondition.ToString(), _directVal.ToString("#.###"), _finalVal.ToString("#.###"),TotalSegments.ToString());
         }
 
     }

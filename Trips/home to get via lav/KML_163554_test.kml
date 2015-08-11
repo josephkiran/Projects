@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opengis.net/kml/2.2">
+  <Style id="yellowLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7f00ffff</color>
+    </LineStyle>
+  </Style>
+  <Style id="greenLine">
+    <LineStyle>
+      <width>4</width>
+      <color>7d00ff00</color>
+    </LineStyle>
+  </Style>
+  <Style id="redLine">
+    <LineStyle>
+      <width>4</width>
+      <color>ff0000ff</color>
+    </LineStyle>
+  </Style>
+  <Style id="blueLine">
+    <LineStyle>
+      <width>4</width>
+      <color>ffff0000</color>
+    </LineStyle>
+  </Style>
+  <Style id="blackLine">
+    <LineStyle>
+      <width>4</width>
+      <color>87000000</color>
+    </LineStyle>
+  </Style>
+  <Placemark>
+    <name>.127,.092,.101,6,Good</name>
+    <description>JK</description>
+    <styleUrl>#greenLine</styleUrl>
+    <LineString>
+      <coordinates>78.382663,17.3984551,0,78.3826321,17.3981173,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>.194,.118,.449,3,Bumpy</name>
+    <description>JK</description>
+    <styleUrl>#yellowLine</styleUrl>
+    <LineString>
+      <coordinates>78.382616,17.3980587,0,78.3825457,17.3979264,0</coordinates>
+      <altitudeMode>absolute</altitudeMode>
+    </LineString>
+  </Placemark>
+</Document>

@@ -122,8 +122,10 @@ namespace FusedLocationProvider
             //txtRange4.Text = "3";
             txtRange1.Text = "0.7"; 
             txtRange2.Text = "1.0";
-            txtRange3.Text = "2.0";
-            txtRange4.Text = "5.0";
+            txtRange3.Text = "4";
+            txtRange4.Text = "8";
+            GPXDataSet.SlightBumpRange = 4;
+            GPXDataSet.BumpRange = 8;
 
             _kmlGen = new KMLGenerator();
             btnGenerateCSV = FindViewById<Button>(Resource.Id.btnGenerateKML);
@@ -565,10 +567,16 @@ namespace FusedLocationProvider
             float.TryParse(txtRange2.Text, out r2);
             float.TryParse(txtRange3.Text, out r3);
             float.TryParse(txtRange4.Text, out r4);
+            
             _dataProcessor.Range1 = r1;
             _dataProcessor.Range2 = r2;
-            _dataProcessor.Range3 = r3;
-            _dataProcessor.Range4 = r4;
+            _dataProcessor.Range3 = 2;
+            _dataProcessor.Range4 = 5;
+            GPXDataSet.SlightBumpRange =r3;
+            GPXDataSet.BumpRange = r4;
+
+
+
 
             GPXData gpxDT = _dataProcessor.ProcessDataForGPX();
             RunOnUiThread(() => txtStdDev.Text = gpxDT.ToString() + "\n" + _currentSampleCount.ToString());

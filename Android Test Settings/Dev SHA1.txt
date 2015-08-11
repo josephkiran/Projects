@@ -1,0 +1,41 @@
+
+C:\Program Files (x86)\Java\jdk1.7.0_55\bin>keytool -list -v -keystore "C:\Users
+\jokiran\AppData\Local\Xamarin\Mono for Android\debug.keystore" -alias androidde
+bugkey -storepass android -keypass android
+
+
+
+
+C:\Program Files (x86)\Java\jdk1.7.0_55\bin>keytool -list -v -keystore "C:\Users
+\jokiran\AppData\Local\Xamarin\Mono for Android\debug.keystore" -alias androidde
+bugkey -storepass android -keypass android
+Picked up _JAVA_OPTIONS: -Xmx1g
+Alias name: androiddebugkey
+Creation date: Jul 24, 2015
+Entry type: PrivateKeyEntry
+Certificate chain length: 1
+Certificate[1]:
+Owner: CN=Android Debug, O=Android, C=US
+Issuer: CN=Android Debug, O=Android, C=US
+Serial number: 404a0009
+Valid from: Fri Jul 24 21:01:15 IST 2015 until: Sun Jul 16 21:01:15 IST 2045
+Certificate fingerprints:
+         MD5:  7A:35:0E:74:B3:1E:01:4E:CC:DD:1A:75:D5:BA:9F:8F
+         SHA1: E0:AB:E4:C7:BE:73:70:B5:45:BD:6D:E0:62:AB:1D:A0:F7:BB:2F:9B
+         SHA256: 99:6D:D6:9F:4B:95:79:81:67:F2:EC:D1:89:D6:E8:68:F9:B9:81:BA:D6:
+B6:FE:7B:38:BB:79:8C:FD:FC:C1:BD
+         Signature algorithm name: SHA256withRSA
+         Version: 3
+
+Extensions:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: EA A6 20 30 DC 66 97 99   1D 10 0B 63 9A 36 6E E1  .. 0.f.....c.6n.
+0010: 7A 6C 63 82                                        zlc.
+]
+]
+
+
+C:\Program Files (x86)\Java\jdk1.7.0_55\bin>
