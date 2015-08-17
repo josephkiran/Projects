@@ -18,8 +18,11 @@ namespace WorkingWithMaps
 
 			var tabs = new TabbedPage ();
 
-			// demonstrates the map control with zooming and map-types
-			tabs.Children.Add (new MapPage {Title = "Map/Zoom", Icon = "glyphish_74_location.png"});
+            // Calibration tab
+            tabs.Children.Add(new MapPage { Title = "Calibration", Icon = "cal.png" });
+
+            // demonstrates the map control with zooming and map-types
+            tabs.Children.Add (new MapPage {Title = "Map/Zoom", Icon = "glyphish_74_location.png"});
 
 			// demonstrates the map control with zooming and map-types
 			tabs.Children.Add (new PinPage {Title = "Pins", Icon = "glyphish_07_map_marker.png"});

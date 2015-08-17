@@ -32,6 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="CalibrationPage.cs" />
+    <Compile Include="CalibrationSettings.cs" />
+    <Compile Include="Calibrator.cs" />
+    <Compile Include="CarSensor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MapPage.cs" />
     <Compile Include="GeocoderPage.cs" />
