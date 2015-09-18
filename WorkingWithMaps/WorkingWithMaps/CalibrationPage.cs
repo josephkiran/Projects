@@ -10,9 +10,13 @@ namespace WorkingWithMaps
 {
     public class CalibrationPage : ContentPage
     {
+        Geocoder geoCoder;
+        Label l = new Label();
+
         public CalibrationPage()
         {
-
+            l.Text = "LAT,LONG";
+            geoCoder = new Geocoder();
             var btnCalibrate = new Button { Text = "Calibrate" };
             btnCalibrate.Clicked += async (sender, e) => {
                 var xamarinAddress = "394 Pacific Ave, San Francisco, California";
@@ -30,8 +34,7 @@ namespace WorkingWithMaps
                 HorizontalOptions = LayoutOptions.Fill,
                 Children = {
                     l,
-                    openLocation,
-                    openDirections
+                    btnCalibrate                    
                 }
             };
         }

@@ -19,7 +19,7 @@ namespace WorkingWithMaps
 			var tabs = new TabbedPage ();
 
             // Calibration tab
-            tabs.Children.Add(new MapPage { Title = "Calibration", Icon = "cal.png" });
+            tabs.Children.Add(new Page1 { Title = "Calibration", Icon = "cal.png" });
 
             // demonstrates the map control with zooming and map-types
             tabs.Children.Add (new MapPage {Title = "Map/Zoom", Icon = "glyphish_74_location.png"});

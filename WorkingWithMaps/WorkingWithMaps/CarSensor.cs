@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorkingWithMaps
 {
-    public class CarSensor
+    public class CarSensor : ISensorEventListener
     {
 
 
