@@ -47,7 +47,11 @@ namespace FusedLocationProvider.Lib
 
         public RoadType RoadCondition { get; set; }
 
+        public string ActualRoadCondition { get; set; }
+
         public string IterationRoadConditions { get; set; }
+
+        public string IterationActualRoadCondition { get; set; }
 
         public DateTime Time { get; set; }
 
@@ -105,6 +109,7 @@ namespace FusedLocationProvider.Lib
                     rollList.Add(item.StdDevRoll);
                     pitchList.Add(item.StdDevPitch);
                     IterationRoadConditions += ((int)item.RoadCondition).ToString() + ",";
+                    IterationActualRoadCondition += item.ActualRoadCondition + ",";
                     count++;
                     totalWeightage += getWeightage(item.RoadCondition);
                 }
@@ -125,6 +130,9 @@ namespace FusedLocationProvider.Lib
                 TotalWeight = totalWeightage;
                 _avgWeight = totalWeightage / count;
                 this.Speed = _gpxdataList[_gpxdataList.Count - 1].Speed;
+                this.ActualRoadCondition = _gpxdataList[_gpxdataList.Count - 1].ActualRoadCondition;
+
+
 
 
                 ProcessRoadTypeV2();
@@ -255,6 +263,8 @@ namespace FusedLocationProvider.Lib
                 Speed = this.Speed,
                 RoadCondition=this.RoadCondition,
                 IterationRoadConditions=this.IterationRoadConditions,
+                IterationActualRoadConditions = this.IterationActualRoadCondition,
+                ActualRoadCondition=this.ActualRoadCondition,
                 Time = this.Time
 
             };

@@ -24,6 +24,7 @@ namespace FusedLocationProvider.Lib
         public double StdDevRoll { get; set; }
         public double StdDevPitch { get; set; }
 
+        public string ActualRoadCondition { get; set; }
         public RoadType RoadCondition { get; set; }
         public double Speed { get;  set; }
         public DateTime Time { get; set; }

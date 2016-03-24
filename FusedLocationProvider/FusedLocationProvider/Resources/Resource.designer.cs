@@ -246,13 +246,10 @@ namespace FusedLocationProvider
 			public const int Icon = 2130837534;
 			
 			// aapt resource value: 0x7f02001f
-			public const int monoandroidsplash = 2130837535;
+			public const int powered_by_google_dark = 2130837535;
 			
 			// aapt resource value: 0x7f020020
-			public const int powered_by_google_dark = 2130837536;
-			
-			// aapt resource value: 0x7f020021
-			public const int powered_by_google_light = 2130837537;
+			public const int powered_by_google_light = 2130837536;
 			
 			static Drawable()
 			{
@@ -267,92 +264,92 @@ namespace FusedLocationProvider
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090005
-			public const int adjust_height = 2131296261;
+			// aapt resource value: 0x7f080005
+			public const int adjust_height = 2131230725;
 			
-			// aapt resource value: 0x7f090006
-			public const int adjust_width = 2131296262;
+			// aapt resource value: 0x7f080006
+			public const int adjust_width = 2131230726;
 			
-			// aapt resource value: 0x7f09000c
-			public const int btnGenerateKML = 2131296268;
+			// aapt resource value: 0x7f08000c
+			public const int btnGenerateKML = 2131230732;
 			
-			// aapt resource value: 0x7f090000
-			public const int hybrid = 2131296256;
+			// aapt resource value: 0x7f080000
+			public const int hybrid = 2131230720;
 			
-			// aapt resource value: 0x7f090016
-			public const int latitude = 2131296278;
+			// aapt resource value: 0x7f080016
+			public const int latitude = 2131230742;
 			
-			// aapt resource value: 0x7f09000f
-			public const int latitude2 = 2131296271;
+			// aapt resource value: 0x7f08000f
+			public const int latitude2 = 2131230735;
 			
-			// aapt resource value: 0x7f090017
-			public const int longitude = 2131296279;
+			// aapt resource value: 0x7f080017
+			public const int longitude = 2131230743;
 			
-			// aapt resource value: 0x7f090010
-			public const int longitude2 = 2131296272;
+			// aapt resource value: 0x7f080010
+			public const int longitude2 = 2131230736;
 			
-			// aapt resource value: 0x7f090015
-			public const int myButton = 2131296277;
+			// aapt resource value: 0x7f080015
+			public const int myButton = 2131230741;
 			
-			// aapt resource value: 0x7f09000e
-			public const int myButton2 = 2131296270;
+			// aapt resource value: 0x7f08000e
+			public const int myButton2 = 2131230734;
 			
-			// aapt resource value: 0x7f09000d
-			public const int myListView = 2131296269;
+			// aapt resource value: 0x7f08000d
+			public const int myListView = 2131230733;
 			
-			// aapt resource value: 0x7f090001
-			public const int none = 2131296257;
+			// aapt resource value: 0x7f080001
+			public const int none = 2131230721;
 			
-			// aapt resource value: 0x7f090002
-			public const int normal = 2131296258;
+			// aapt resource value: 0x7f080002
+			public const int normal = 2131230722;
 			
-			// aapt resource value: 0x7f090018
-			public const int provider = 2131296280;
+			// aapt resource value: 0x7f080018
+			public const int provider = 2131230744;
 			
-			// aapt resource value: 0x7f090014
-			public const int provider2 = 2131296276;
+			// aapt resource value: 0x7f080014
+			public const int provider2 = 2131230740;
 			
-			// aapt resource value: 0x7f090003
-			public const int satellite = 2131296259;
+			// aapt resource value: 0x7f080003
+			public const int satellite = 2131230723;
 			
-			// aapt resource value: 0x7f090004
-			public const int terrain = 2131296260;
+			// aapt resource value: 0x7f080004
+			public const int terrain = 2131230724;
 			
-			// aapt resource value: 0x7f09000b
-			public const int tgStartStop = 2131296267;
+			// aapt resource value: 0x7f08000b
+			public const int tgStartStop = 2131230731;
 			
-			// aapt resource value: 0x7f09000a
-			public const int togglebutton = 2131296266;
+			// aapt resource value: 0x7f08000a
+			public const int togglebutton = 2131230730;
 			
-			// aapt resource value: 0x7f090013
-			public const int txtAvgStdDev = 2131296275;
+			// aapt resource value: 0x7f080013
+			public const int txtAvgStdDev = 2131230739;
 			
-			// aapt resource value: 0x7f090009
-			public const int txtCondition = 2131296265;
+			// aapt resource value: 0x7f080009
+			public const int txtCondition = 2131230729;
 			
-			// aapt resource value: 0x7f090007
-			public const int txtLat = 2131296263;
+			// aapt resource value: 0x7f080007
+			public const int txtLat = 2131230727;
 			
-			// aapt resource value: 0x7f090008
-			public const int txtLog = 2131296264;
+			// aapt resource value: 0x7f080008
+			public const int txtLog = 2131230728;
 			
-			// aapt resource value: 0x7f090019
-			public const int txtRange1 = 2131296281;
+			// aapt resource value: 0x7f080019
+			public const int txtRange1 = 2131230745;
 			
-			// aapt resource value: 0x7f09001a
-			public const int txtRange2 = 2131296282;
+			// aapt resource value: 0x7f08001a
+			public const int txtRange2 = 2131230746;
 			
-			// aapt resource value: 0x7f09001b
-			public const int txtRange3 = 2131296283;
+			// aapt resource value: 0x7f08001b
+			public const int txtRange3 = 2131230747;
 			
-			// aapt resource value: 0x7f09001c
-			public const int txtRange4 = 2131296284;
+			// aapt resource value: 0x7f08001c
+			public const int txtRange4 = 2131230748;
 			
-			// aapt resource value: 0x7f090011
-			public const int txtRaw = 2131296273;
+			// aapt resource value: 0x7f080011
+			public const int txtRaw = 2131230737;
 			
-			// aapt resource value: 0x7f090012
-			public const int txtStdDev = 2131296274;
+			// aapt resource value: 0x7f080012
+			public const int txtStdDev = 2131230738;
 			
 			static Id()
 			{
@@ -544,22 +541,6 @@ namespace FusedLocationProvider
 			}
 			
 			private String()
-			{
-			}
-		}
-		
-		public partial class Style
-		{
-			
-			// aapt resource value: 0x7f080000
-			public const int Mono_Android_Theme_Splash = 2131230720;
-			
-			static Style()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Style()
 			{
 			}
 		}

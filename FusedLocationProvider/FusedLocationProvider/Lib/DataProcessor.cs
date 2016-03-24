@@ -91,6 +91,7 @@ namespace FusedLocationProvider.Lib
                 EndLat = _sensorDataSet[lastDS].Lat,
                 EndLog = _sensorDataSet[lastDS].Log,
                 RoadCondition = _rdType,
+                ActualRoadCondition = _sensorDataSet[lastDS].ActualRoadCondition,
                 StdDevPitch = _sdDevPitch,
                 StdDevRoll = _sdDevRoll,
                 StdDevYaw = _sdDevYaw,

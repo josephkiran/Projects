@@ -23,14 +23,16 @@ namespace FusedLocationProvider.Lib
             for (int i = 0; i < segments.Count; i++)
             {
                 Segment item = segments[i];
-                sb.Append(string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}{11}", 
+                sb.Append(string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}{12}", 
                     item.StartLat, item.StartLog,
                     item.EndLat,item.EndLog, 
                     item.AvgDevYaw.ToString("#.####"), item.AvgDevRoll.ToString("#.####"),
                     item.AvgDevPitch.ToString("#.####"),
+                    item.ActualRoadCondition,
                     item.Speed.ToString(), 
                     item.RoadCondition.ToString(),item.Time.ToLongTimeString(),
                     item.IterationRoadConditions,
+                    //item.IterationActualRoadConditions,
                     System.Environment.NewLine));
             }
             return sb.ToString();

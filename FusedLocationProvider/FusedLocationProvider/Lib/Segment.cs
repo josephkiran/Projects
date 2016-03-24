@@ -30,6 +30,9 @@ namespace FusedLocationProvider.Lib
         public DateTime Time { get; set; }
         public RoadType RoadCondition { get; set; }
 
+        public string ActualRoadCondition { get; set; }
+
         public string IterationRoadConditions { get; set; }
+        public string IterationActualRoadConditions { get; set; }
     }
 }

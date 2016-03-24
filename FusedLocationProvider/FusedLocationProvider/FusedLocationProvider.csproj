@@ -14,7 +14,7 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>FusedLocationProvider</AssemblyName>
-    <TargetFrameworkVersion>v5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -85,6 +85,7 @@
     <Compile Include="Lib\DataProcessor.cs" />
     <Compile Include="Lib\GPXData.cs" />
     <Compile Include="Lib\GPXDataSet.cs" />
+    <Compile Include="Lib\JKSocket.cs" />
     <Compile Include="Lib\KMLGenerator.cs" />
     <Compile Include="Lib\RoadType.cs" />
     <Compile Include="Lib\Segment.cs" />

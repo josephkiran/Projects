@@ -19,6 +19,7 @@ using FusedLocationProvider.Xml2CSharp;
 using System.IO;
 using System.Xml.Serialization;
 using Android.Media;
+using System.Threading.Tasks;
 
 namespace FusedLocationProvider
 {
@@ -77,6 +78,8 @@ namespace FusedLocationProvider
         private bool _continueSampling = true;
         private int _currentSampleCount = 0;
         private List<SensorData> _sensorData = null;
+        private string _actualRoadCondition = "0";
+        private JKSocket _mySocket;
         private GPXDataSet _gpxDataSet = null;
         private KMLGenerator _kmlGen = null;
         private int fileID = 0;
@@ -126,6 +129,12 @@ namespace FusedLocationProvider
             txtRange4.Text = "8";
             GPXDataSet.SlightBumpRange = 4;
             GPXDataSet.BumpRange = 8;
+
+            //JK Socket
+            _mySocket = new JKSocket("192.168.1.24", 1800);
+            _mySocket.RecdDataEvent = recvText;
+            _mySocket.StatusEvent = ClientStatusUpdate;
+
 
             _kmlGen = new KMLGenerator();
             btnGenerateCSV = FindViewById<Button>(Resource.Id.btnGenerateKML);
@@ -358,7 +367,31 @@ namespace FusedLocationProvider
 
         private void Start()
         {
+            Task t = new Task(new Action(_mySocket.ConnectToServer));
+            t.Start();
             apiClient.Connect();
+        }
+
+        public void ClientStatusUpdate(ConnectionStatus cs, string msg)
+        {
+            if (cs == ConnectionStatus.Connected)
+            {
+                RunOnUiThread(() => Toast.MakeText(this, "Connected to Server", ToastLength.Short).Show());
+            }
+            else
+            {
+                RunOnUiThread(() => Toast.MakeText(this, "Could not connect to server", ToastLength.Short).Show());
+            }
+           
+        }
+
+        private void recvText(string msg)
+        {
+            if (msg == "16") return;
+            _actualRoadCondition = msg;
+            RunOnUiThread(() => Toast.MakeText(this, "Recd:" + msg, ToastLength.Short).Show());
+
+            //lblDataRecv.Invoke(_uiUpdater);
         }
 
         private void CreateALLCSVFile()
@@ -485,7 +518,7 @@ namespace FusedLocationProvider
 			//provider2.Text = "Provider: " + location.Provider.ToString();
             int startVal = -1;
             if (togglebutton.Checked)
-                startVal = 3;
+                startVal = 2;
 
             if (location.Speed > startVal)
             {
@@ -531,6 +564,8 @@ namespace FusedLocationProvider
                 {
                    
                     Location loca = LocationServices.FusedLocationApi.GetLastLocation(apiClient);
+                    if (loca == null)
+                        return;
                     _sensorData.Add(new SensorData()
                     {
                         Lat = loca.Latitude,
@@ -539,6 +574,7 @@ namespace FusedLocationProvider
                         Yaw = e.Values[0],
                         Roll = e.Values[1],
                         Pitch = e.Values[2],
+                        ActualRoadCondition = _actualRoadCondition,
                         Time = DateTime.Now//TODO: later get it in constr
                     });
                     //txtCondition.Text = _currentSampleCount.ToString();
